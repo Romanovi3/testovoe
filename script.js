@@ -1,24 +1,26 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('modal');
-    const openModalBtn = document.getElementById('openModal');
-  
-    openModalBtn.addEventListener('click', function() {
-      modal.classList.add('show');
-    });
-  
-    modal.addEventListener('click', function(event) {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-  
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    });
-  
-    function closeModal() {
-      modal.classList.remove('show');
-    }
-  });
+const modal = document.getElementById("modal");
+const btn = document.getElementById("openModal");
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+  setTimeout(() => {
+    modal.classList.add("show");
+  }, 10);
+}
+
+span.onclick = function() {
+  modal.classList.remove("show");
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 300);
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
+  }
+}
